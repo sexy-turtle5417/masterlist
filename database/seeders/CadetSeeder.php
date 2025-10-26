@@ -16,13 +16,22 @@ class CadetSeeder extends Seeder
     public function run(): void
     {
         //
-        Cadet::factory()->count(500)
-            ->hasAttached(
-                Address::factory()->count(2),
-                ["title" => fake()->text(50)]
-            )->hasAttached(
-                Beneficiary::factory()->count(rand(2, 3)),
-                ['relationship' => fake()->text(50)]
-            )->create();
+        Cadet::factory()
+            ->count(500)
+            ->create()
+            ->each(function (Cadet $cadet) {
+
+                $beneficiaries = Beneficiary::factory(random_int(2, 3))->create();
+                foreach ($beneficiaries as $beneficiary)
+                    $cadet->beneficiaries()->attach($beneficiary->id, [
+                        'relationship' => fake()->text(50)
+                    ]);
+
+                $addresses = Address::factory(random_int(2, 4))->create();
+                foreach ($addresses as $address)
+                    $cadet->addresses()->attach($address->id, [
+                        'title' => fake()->text(50)
+                    ]);
+            });
     }
 }
