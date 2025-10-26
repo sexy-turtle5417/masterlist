@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Address;
 use App\Models\Beneficiary;
 use App\Models\Cadet;
+use App\Models\ContactNumber;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -30,6 +31,12 @@ class CadetSeeder extends Seeder
                 $addresses = Address::factory(random_int(2, 4))->create();
                 foreach ($addresses as $address)
                     $cadet->addresses()->attach($address->id, [
+                        'title' => fake()->text(50)
+                    ]);
+
+                $contactNumbers = ContactNumber::factory(random_int(1, 2))->create();
+                foreach ($contactNumbers as $contactNumber)
+                    $cadet->contactNumbers()->attach($contactNumber->id, [
                         'title' => fake()->text(50)
                     ]);
             });
