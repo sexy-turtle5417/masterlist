@@ -17,4 +17,11 @@ class Cadet extends Model
             ->withTimestamps()
             ->withPivot('title');
     }
+
+    public function beneficiaries(): BelongsToMany
+    {
+        return $this->belongsToMany(Beneficiary::class)
+            ->withTimestamps()
+            ->withPivot('relationship');
+    }
 }
