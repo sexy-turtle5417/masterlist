@@ -6,7 +6,6 @@ use App\Models\Address;
 use App\Models\Beneficiary;
 use App\Models\Cadet;
 use App\Models\ContactNumber;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CadetSeeder extends Seeder
@@ -22,7 +21,17 @@ class CadetSeeder extends Seeder
             ->create()
             ->each(function (Cadet $cadet) {
 
-                $beneficiaries = Beneficiary::factory(random_int(2, 3))->create();
+                $beneficiaries = Beneficiary::factory()
+                    ->count(random_int(2, 3))
+                    ->create()
+                    ->each(function (Beneficiary $beneficiary) {
+                        $contactNumbers = ContactNumber::factory(random_int(1, 2))->create();
+                        foreach($contactNumbers as $contactNumber)
+                            $beneficiary->contactNumbers()->attach($contactNumber->id, [
+                                'title' => fake()->text(50)
+                            ]);
+                    });
+
                 foreach ($beneficiaries as $beneficiary)
                     $cadet->beneficiaries()->attach($beneficiary->id, [
                         'relationship' => fake()->text(50)

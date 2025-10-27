@@ -19,4 +19,11 @@ class Beneficiary extends Model
             ->withTimestamps()
             ->withPivot('relationship');
     }
+
+    public function contactNumbers(): BelongsToMany
+    {
+        return $this->belongsToMany(ContactNumber::class)
+            ->withTimestamps()
+            ->withPivot('title');
+    }
 }
