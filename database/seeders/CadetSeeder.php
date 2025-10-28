@@ -17,7 +17,7 @@ class CadetSeeder extends Seeder
     {
         //
         Cadet::factory()
-            ->count(500)
+            ->count(100)
             ->create()
             ->each(function (Cadet $cadet) {
 
