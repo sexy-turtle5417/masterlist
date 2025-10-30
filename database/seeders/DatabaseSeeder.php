@@ -54,6 +54,7 @@ class DatabaseSeeder extends Seeder
             "date_conducted" => "2025-11-15",
             "start_time" => "08:00:00",
             "end_time" => "12:00:00",
+            "is_remedial" => true,
             "hours_credit" => 4.0
         ]);
 
@@ -79,6 +80,7 @@ class DatabaseSeeder extends Seeder
             "date_conducted" => "2025-11-22",
             "start_time" => "08:00:00",
             "end_time" => "12:00:00",
+            "is_remedial" => false,
             "hours_credit" => 4.0
         ]);
 
@@ -95,7 +97,8 @@ class DatabaseSeeder extends Seeder
             "date_conducted" => "2025-11-29",
             "start_time" => "08:00:00",
             "end_time" => "12:00:00",
-            "hours_credit" => 4.0
+            "hours_credit" => 4.0,
+            "is_remedial" => true
         ]);
 
         $trainingSession3->attendances()->create([
