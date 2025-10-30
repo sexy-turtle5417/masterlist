@@ -31,4 +31,16 @@ class Cadet extends Model
             ->withTimestamps()
             ->withPivot('title');
     }
+
+    public function courses(): BelongsToMany
+    {
+        return $this->belongsToMany(Course::class, 'enrollments', 'cadet_id', 'course_id')
+            ->withTimestamps();
+    }
+
+    public function semesters(): BelongsToMany
+    {
+        return $this->belongsToMany(Semester::class, 'enrollments', 'cadet_id', 'semester_id')
+            ->withTimestamps();
+    }
 }
