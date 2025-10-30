@@ -20,6 +20,7 @@ return new class extends Migration
             $table->time('start_time');
             $table->time('end_time');
             $table->double('hours_credit');
+            $table->boolean("is_remedial")->default(false);
             $table->unique(['date_conducted', 'semester_id', 'nth_session']);
         });
     }
