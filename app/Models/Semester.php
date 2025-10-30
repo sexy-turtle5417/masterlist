@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Semester extends Model
 {
@@ -18,5 +19,10 @@ class Semester extends Model
     {
         return $this->belongsToMany(Cadet::class, 'enrollments', 'semester_id', 'cadet_id')
             ->withTimestamps();
+    }
+
+    public function trainingSessions(): HasMany
+    {
+        return $this->hasMany(TrainingSession::class);
     }
 }
