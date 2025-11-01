@@ -17,7 +17,7 @@ class CadetSeeder extends Seeder
     {
         //
         Cadet::factory()
-            ->count(500)
+            ->count(50)
             ->create()
             ->each(function (Cadet $cadet) {
 
@@ -26,7 +26,7 @@ class CadetSeeder extends Seeder
                     ->create()
                     ->each(function (Beneficiary $beneficiary) {
                         $contactNumbers = ContactNumber::factory(random_int(1, 2))->create();
-                        foreach($contactNumbers as $contactNumber)
+                        foreach ($contactNumbers as $contactNumber)
                             $beneficiary->contactNumbers()->attach($contactNumber->id, [
                                 'title' => fake()->text(50)
                             ]);
