@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('enrollment_id')->constrained();
             $table->foreignId('training_session_id')->constrained();
-            $table->double('hours_attended');
+            $table->time('time_in')->nullable();
+            $table->time('time_out')->nullable();
+            $table->double('hours_credit');
             $table->text('remarks');
             $table->unique(['enrollment_id', 'training_session_id']);
             $table->timestamps();
