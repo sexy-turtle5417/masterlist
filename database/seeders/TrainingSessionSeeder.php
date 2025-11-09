@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Semester;
 use App\Models\TrainingSession;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Factories\Sequence;
@@ -16,7 +17,7 @@ class TrainingSessionSeeder extends Seeder
     {
         //
         TrainingSession::factory()
-            ->count(8 * 15)
+            ->count(Semester::count() * 15)
             ->state(new Sequence(
                 ["nth_session" => 1],
                 ["nth_session" => 2],
