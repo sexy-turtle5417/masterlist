@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             CadetSeeder::class,
             EnrollmentSeeder::class,
-            TrainingSessionSeeder::class
+            TrainingSessionSeeder::class,
+            AttendanceSeeder::class
         ]);
     }
 }
