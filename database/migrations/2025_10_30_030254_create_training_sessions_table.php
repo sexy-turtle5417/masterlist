@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->integer('nth_session');
             $table->foreignId('address_id')->constrained();
-            $table->foreignId('semester_id')->constrained();
             $table->date('date_conducted');
             $table->time('start_time');
             $table->time('end_time');

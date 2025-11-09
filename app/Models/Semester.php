@@ -20,9 +20,4 @@ class Semester extends Model
         return $this->belongsToMany(Cadet::class, 'enrollments', 'semester_id', 'cadet_id')
             ->withTimestamps();
     }
-
-    public function trainingSessions(): HasMany
-    {
-        return $this->hasMany(TrainingSession::class);
-    }
 }
