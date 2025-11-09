@@ -43,15 +43,20 @@ class AttendanceFactory extends Factory
 
         $used[$key] = true;
 
+        $possibleRemarks = [
+            "PRESENT",
+            "EXCUSED",
+            "ABSENT"
+        ];
 
         return [
             //
             "enrollment_id" => $enrollmentId,
             "training_session_id" => $trainingSessionId,
-            "time_in" => fake()->time(),
-            "time_out" => fake()->time(),
-            "hours_credit" => rand(3, 4),
-            'remarks' => fake()->text(20)
+            "time_in" => rand(1, 0) == 1 ? fake()->time() : null,
+            "time_out" => rand(1, 0) == 1 ? fake()->time() : null,
+            "hours_credit" => fake()->randomFloat(2, 3, 4),
+            'remarks' => fake()->randomElement($possibleRemarks)
         ];
     }
 }
