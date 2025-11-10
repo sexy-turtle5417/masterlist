@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Semester extends Model
 {
@@ -26,5 +27,10 @@ class Semester extends Model
     public function courses(): BelongsToMany
     {
         return $this->belongsToMany(Course::class)->withTimestamps();
+    }
+
+    public function cadets(): HasManyThrough
+    {
+        return $this->hasManyThrough(Cadet::class, CourseSemester::class);
     }
 }
