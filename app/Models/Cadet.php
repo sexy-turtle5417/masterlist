@@ -11,8 +11,6 @@ class Cadet extends Model
     //
     use HasFactory;
 
-    protected $table = "course_semester_student";
-
     public function courseSemester(): BelongsTo
     {
         return $this->belongsTo(CourseSemester::class);
