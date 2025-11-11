@@ -93,60 +93,48 @@ class SecondYearSeeder extends Seeder
             ->count(5)
             ->create();
 
-        $ms1Cadets = $basicCadets->map(function ($student) {
-            $militaryScience1 = CourseSemester::where('course_id', 1)
-                ->where('semester_id', 1)
-                ->first();
+        $ms1Cadets = $basicCadets->map(function ($student) use ($courseSemesters) {
+            $militaryScience1 = $courseSemesters[0];
             return Cadet::factory()
                 ->for($student)
                 ->for($militaryScience1)
                 ->create();
         });
 
-        $ms2Cadets = $basicCadets->map(function ($student) {
-            $militaryScience2 = CourseSemester::where('course_id', 2)
-                ->where('semester_id', 2)
-                ->first();
+        $ms2Cadets = $basicCadets->map(function ($student) use ($courseSemesters) {
+            $militaryScience2 = $courseSemesters[1];
             return Cadet::factory()
                 ->for($student)
                 ->for($militaryScience2)
                 ->create();
         });
 
-        $ms31Cadets = $secondClassCadets->map(function ($student) {
-            $militaryScience31 = CourseSemester::where('course_id', 3)
-                ->where('semester_id', 1)
-                ->first();
+        $ms31Cadets = $secondClassCadets->map(function ($student) use ($courseSemesters) {
+            $militaryScience31 = $courseSemesters[2];
             return Cadet::factory()
                 ->for($student)
                 ->for($militaryScience31)
                 ->create();
         });
 
-        $ms32Cadets = $secondClassCadets->map(function ($student) {
-            $militaryScience32 = CourseSemester::where('course_id', 4)
-                ->where('semester_id', 2)
-                ->first();
+        $ms32Cadets = $secondClassCadets->map(function ($student) use ($courseSemesters) {
+            $militaryScience32 = $courseSemesters[3];
             return Cadet::factory()
                 ->for($student)
                 ->for($militaryScience32)
                 ->create();
         });
 
-        $ms41Cadets = $firstClassCadets->map(function ($student) {
-            $militaryScience41 = CourseSemester::where('course_id', 5)
-                ->where('semester_id', 1)
-                ->first();
+        $ms41Cadets = $firstClassCadets->map(function ($student) use ($courseSemesters) {
+            $militaryScience41 = $courseSemesters[4];
             return Cadet::factory()
                 ->for($student)
                 ->for($militaryScience41)
                 ->create();
         });
 
-        $ms42Cadets = $firstClassCadets->map(function ($student) {
-            $militaryScience42 = CourseSemester::where('course_id', 6)
-                ->where('semester_id', 2)
-                ->first();
+        $ms42Cadets = $firstClassCadets->map(function ($student) use ($courseSemesters) {
+            $militaryScience42 = $courseSemesters[5];
             return Cadet::factory()
                 ->for($student)
                 ->for($militaryScience42)
