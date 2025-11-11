@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Attendance;
 use Illuminate\Database\Seeder;
 use App\Models\Cadet;
 use App\Models\Course;
@@ -9,6 +10,7 @@ use App\Models\CourseSemester;
 use App\Models\SchoolYear;
 use App\Models\Semester;
 use App\Models\Student;
+use App\Models\TrainingSession;
 
 class FirstYearSeeder extends Seeder
 {
@@ -148,5 +150,29 @@ class FirstYearSeeder extends Seeder
                 ->for($militaryScience42)
                 ->create();
         });
+
+        $firstSemesterCadets = $firstSemester->cadets()->get();
+
+        for ($i = 0; $i < 15; $i++) {
+            $trainingSession = TrainingSession::factory()->create();
+            foreach ($firstSemesterCadets as $cadet) {
+                $attendance = Attendance::factory()
+                    ->for($trainingSession)
+                    ->for($cadet)
+                    ->create();
+            }
+        }
+
+        $secondSemesterCadets = $secondSemester->cadets()->get();
+
+        for ($i = 0; $i < 15; $i++) {
+            $trainingSession = TrainingSession::factory()->create();
+            foreach ($secondSemesterCadets as $cadet) {
+                $attendance = Attendance::factory()
+                    ->for($trainingSession)
+                    ->for($cadet)
+                    ->create();
+            }
+        }
     }
 }
