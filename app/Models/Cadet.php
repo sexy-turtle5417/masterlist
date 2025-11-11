@@ -35,6 +35,15 @@ class Cadet extends Model
 
     public function hoursAttended(): float
     {
-        return $this->attendances()->sum('hours_credit');
+        return $this
+            ->attendances()
+            ->sum('hours_credit');
+    }
+
+    public function totalTrainingHours(): float
+    {
+        return $this->trainingSessions()
+            ->where('is_remedial', false)
+            ->sum('training_sessions.hours_credit');
     }
 }
