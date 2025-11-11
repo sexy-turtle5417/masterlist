@@ -26,7 +26,7 @@ class AttendanceFactory extends Factory
         return [
             "time_in" => fake()->optional()->time(),
             "time_out" => fake()->optional()->time(),
-            "hours_credit" => fake()->randomFloat(2, 3, 4),
+            "hours_credit" => fake()->randomFloat(2, 0, 4),
             "remarks" => fake()->randomElement($possibleRemarks)
         ];
     }
