@@ -1,26 +1,14 @@
 <x-layout>
-    <ul>
-        @foreach ($cadets as $cadet)
-            <li>
-                <div>{{ $cadet->student->student_number }}</div>
-                <div>CDT
-                    {{ $cadet->student->first_name }}
-                    @if ($cadet->student->middle_name != null)
-                        {{ $cadet->student->middle_name[0] }}
-                    @endif
+    <div class="w-2/3">
+        <ul>
+            <div class="flex flex-col gap-2">
+                @foreach ($cadets as $cadet)
+                    <li>
+                        <x-cadet-component :cadet="$cadet"></x-cadet-component>
+                    </li>
+                @endforeach
+            </div>
+        </ul>
+    </div>
 
-                    {{ $cadet->student->last_name }}
-                </div>
-                <div>
-                    {{ $cadet->student->gender }}
-                </div>
-                <div>
-                    {{ $cadet->courseSemester->course->title }}
-                </div>
-                <div>
-                    {{ $cadet->total_hours_attended }} Hours
-                </div>
-            </li>
-        @endforeach
-    </ul>
 </x-layout>
