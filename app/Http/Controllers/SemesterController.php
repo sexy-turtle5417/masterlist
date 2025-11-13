@@ -41,6 +41,7 @@ class SemesterController extends Controller
             ->with('student')
             ->with('courseSemester.course')
             ->withSum(['attendances as total_hours_attended'], 'hours_credit')
+            ->withSum(['trainingSessions as total_training_hours'], 'hours_credit')
             ->take(3)
             ->get();
 
